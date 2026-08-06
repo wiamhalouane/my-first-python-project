@@ -1,9 +1,13 @@
 # My First Python Project
 
-This is my first project to learn Git and GitHub.
+This is my first Python project to learn Python, Git and GitHub.
 
-## How to run
+## Technologies
+- Python
+- Git
+- GitHub
 
-Run:
-
-python main.py
+## What I learned
+- How to create a repository
+- How to commit changes
+- How to push code to GitHub
