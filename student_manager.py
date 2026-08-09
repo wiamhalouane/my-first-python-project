@@ -105,6 +105,32 @@ def delete_student():
 
     print("Student not found")
 
+def update_student():
+    student_id = int(input("Enter student ID to update: "))
+
+    for student in students:
+        if student["id"] == student_id:
+
+            print("Current grades:", student["grades"])
+
+            number_of_grades = int(input("How many grades? "))
+
+            grades = []
+
+            for i in range(number_of_grades):
+                grade = float(input(f"Enter new grade {i+1}: "))
+                grades.append(grade)
+
+            student["grades"] = grades
+            student["average"] = calculate_average(grades)
+
+            save_students()
+
+            print("Student updated successfully!")
+            return
+
+    print("Student not found")
+
 
 load_students()
 
@@ -115,7 +141,8 @@ while True:
     print("2. Show students")
     print("3. Search student")
     print("4. Delete student")
-    print("5. Exit")
+    print("5. Update student")
+    print("6. Exit")
 
     choice = input("Choose an option: ")
 
@@ -132,6 +159,9 @@ while True:
         delete_student()
 
     elif choice == "5":
+        update_student()
+
+    elif choice == "6":
         print("Goodbye!")
         break
 
