@@ -1,10 +1,29 @@
 [
     {
-        "name": "lali",
+        "id": 1,
+        "name": "John",
         "grades": [
             12.0,
             14.0
         ],
         "average": 13.0
+    },
+    {
+        "id": 2,
+        "name": "Ali",
+        "grades": [
+            19.0,
+            27.0
+        ],
+        "average": 23.0
+    },
+    {
+        "id": 3,
+        "name": "Sara",
+        "grades": [
+            15.0,
+            16.0
+        ],
+        "average": 15.5
     }
 ]

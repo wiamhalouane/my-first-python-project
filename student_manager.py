@@ -37,7 +37,10 @@ def add_student():
 
     average = calculate_average(grades)
 
+    student_id = len(students) + 1
+
     student = {
+        "id": student_id,
         "name": name,
         "grades": grades,
         "average": average
@@ -49,7 +52,6 @@ def add_student():
 
     print("Student added successfully!")
 
-
 def show_students():
 
     if len(students) == 0:
@@ -58,6 +60,7 @@ def show_students():
 
     for student in students:
         print("----------------")
+        print("ID:", student["id"])
         print("Name:", student["name"])
         print("Grades:", student["grades"])
         print("Average:", student["average"])
