@@ -1,14 +1,5 @@
 [
     {
-        "id": 1,
-        "name": "John",
-        "grades": [
-            12.0,
-            14.0
-        ],
-        "average": 13.0
-    },
-    {
         "id": 2,
         "name": "Ali",
         "grades": [

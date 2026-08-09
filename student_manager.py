@@ -91,6 +91,20 @@ def search_student():
 
     print("Student not found")
 
+def delete_student():
+
+    student_id = int(input("Enter student ID to delete: "))
+
+    for student in students:
+        if student["id"] == student_id:
+            students.remove(student)
+            save_students()
+
+            print("Student deleted successfully!")
+            return
+
+    print("Student not found")
+
 
 load_students()
 
@@ -100,7 +114,8 @@ while True:
     print("1. Add student")
     print("2. Show students")
     print("3. Search student")
-    print("4. Exit")
+    print("4. Delete student")
+    print("5. Exit")
 
     choice = input("Choose an option: ")
 
@@ -114,6 +129,9 @@ while True:
         search_student()
 
     elif choice == "4":
+        delete_student()
+
+    elif choice == "5":
         print("Goodbye!")
         break
 
