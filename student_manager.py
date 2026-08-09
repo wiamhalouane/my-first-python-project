@@ -70,6 +70,27 @@ def show_students():
         else:
             print("Status: Failed")
 
+def search_student():
+
+    student_id = int(input("Enter student ID: "))
+
+    for student in students:
+        if student["id"] == student_id:
+            print("----------------")
+            print("ID:", student["id"])
+            print("Name:", student["name"])
+            print("Grades:", student["grades"])
+            print("Average:", student["average"])
+
+            if student["average"] >= 10:
+                print("Status: Passed")
+            else:
+                print("Status: Failed")
+
+            return
+
+    print("Student not found")
+
 
 load_students()
 
@@ -78,7 +99,8 @@ while True:
     print("\nStudent Grade Manager")
     print("1. Add student")
     print("2. Show students")
-    print("3. Exit")
+    print("3. Search student")
+    print("4. Exit")
 
     choice = input("Choose an option: ")
 
@@ -89,6 +111,9 @@ while True:
         show_students()
 
     elif choice == "3":
+        search_student()
+
+    elif choice == "4":
         print("Goodbye!")
         break
 
