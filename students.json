@@ -13,9 +13,9 @@
         "id": 3,
         "name": "Sara",
         "grades": [
-            15.0,
+            13.0,
             16.0
         ],
-        "average": 15.5
+        "average": 14.5
     }
 ]

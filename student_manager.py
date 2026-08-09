@@ -7,6 +7,20 @@ def calculate_average(grades):
     return sum(grades) / len(grades)
 
 
+def get_grade(grade_number):
+    while True:
+        try:
+            grade = float(input(f"Enter grade {grade_number}: "))
+
+            if 0 <= grade <= 20:
+                return grade
+
+            print("Grade must be between 0 and 20.")
+
+        except ValueError:
+            print("Please enter a valid number.")
+
+
 def load_students():
     global students
 
@@ -24,20 +38,32 @@ def save_students():
 
 
 def add_student():
-
     name = input("Enter student name: ")
 
-    number_of_grades = int(input("How many grades? "))
+    while True:
+        try:
+            number_of_grades = int(input("How many grades? "))
+
+            if number_of_grades > 0:
+                break
+
+            print("Number of grades must be greater than 0.")
+
+        except ValueError:
+            print("Please enter a valid number.")
 
     grades = []
 
     for i in range(number_of_grades):
-        grade = float(input(f"Enter grade {i+1}: "))
+        grade = get_grade(i + 1)
         grades.append(grade)
 
     average = calculate_average(grades)
 
-    student_id = len(students) + 1
+    if students:
+        student_id = max(student["id"] for student in students) + 1
+    else:
+        student_id = 1
 
     student = {
         "id": student_id,
@@ -52,8 +78,8 @@ def add_student():
 
     print("Student added successfully!")
 
-def show_students():
 
+def show_students():
     if len(students) == 0:
         print("No students found")
         return
@@ -63,16 +89,20 @@ def show_students():
         print("ID:", student["id"])
         print("Name:", student["name"])
         print("Grades:", student["grades"])
-        print("Average:", student["average"])
+        print("Average:", round(student["average"], 2))
 
         if student["average"] >= 10:
             print("Status: Passed")
         else:
             print("Status: Failed")
 
-def search_student():
 
-    student_id = int(input("Enter student ID: "))
+def search_student():
+    try:
+        student_id = int(input("Enter student ID: "))
+    except ValueError:
+        print("Please enter a valid ID.")
+        return
 
     for student in students:
         if student["id"] == student_id:
@@ -80,7 +110,7 @@ def search_student():
             print("ID:", student["id"])
             print("Name:", student["name"])
             print("Grades:", student["grades"])
-            print("Average:", student["average"])
+            print("Average:", round(student["average"], 2))
 
             if student["average"] >= 10:
                 print("Status: Passed")
@@ -91,9 +121,13 @@ def search_student():
 
     print("Student not found")
 
-def delete_student():
 
-    student_id = int(input("Enter student ID to delete: "))
+def delete_student():
+    try:
+        student_id = int(input("Enter student ID to delete: "))
+    except ValueError:
+        print("Please enter a valid ID.")
+        return
 
     for student in students:
         if student["id"] == student_id:
@@ -105,20 +139,35 @@ def delete_student():
 
     print("Student not found")
 
+
 def update_student():
-    student_id = int(input("Enter student ID to update: "))
+    try:
+        student_id = int(input("Enter student ID to update: "))
+    except ValueError:
+        print("Please enter a valid ID.")
+        return
 
     for student in students:
         if student["id"] == student_id:
 
             print("Current grades:", student["grades"])
 
-            number_of_grades = int(input("How many grades? "))
+            while True:
+                try:
+                    number_of_grades = int(input("How many grades? "))
+
+                    if number_of_grades > 0:
+                        break
+
+                    print("Number of grades must be greater than 0.")
+
+                except ValueError:
+                    print("Please enter a valid number.")
 
             grades = []
 
             for i in range(number_of_grades):
-                grade = float(input(f"Enter new grade {i+1}: "))
+                grade = get_grade(i + 1)
                 grades.append(grade)
 
             student["grades"] = grades
@@ -133,6 +182,7 @@ def update_student():
 
 
 load_students()
+
 
 while True:
 
