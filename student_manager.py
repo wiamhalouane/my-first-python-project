@@ -1,6 +1,4 @@
-import json
-
-students = []
+from storage import save_students
 
 
 def calculate_average(grades):
@@ -21,23 +19,7 @@ def get_grade(grade_number):
             print("Please enter a valid number.")
 
 
-def load_students():
-    global students
-
-    try:
-        with open("students.json", "r") as file:
-            students = json.load(file)
-
-    except FileNotFoundError:
-        students = []
-
-
-def save_students():
-    with open("students.json", "w") as file:
-        json.dump(students, file, indent=4)
-
-
-def add_student():
+def add_student(students):
     name = input("Enter student name: ")
 
     while True:
@@ -73,13 +55,12 @@ def add_student():
     }
 
     students.append(student)
-
-    save_students()
+    save_students(students)
 
     print("Student added successfully!")
 
 
-def show_students():
+def show_students(students):
     if len(students) == 0:
         print("No students found")
         return
@@ -97,7 +78,7 @@ def show_students():
             print("Status: Failed")
 
 
-def search_student():
+def search_student(students):
     try:
         student_id = int(input("Enter student ID: "))
     except ValueError:
@@ -122,7 +103,7 @@ def search_student():
     print("Student not found")
 
 
-def delete_student():
+def delete_student(students):
     try:
         student_id = int(input("Enter student ID to delete: "))
     except ValueError:
@@ -132,7 +113,7 @@ def delete_student():
     for student in students:
         if student["id"] == student_id:
             students.remove(student)
-            save_students()
+            save_students(students)
 
             print("Student deleted successfully!")
             return
@@ -140,7 +121,7 @@ def delete_student():
     print("Student not found")
 
 
-def update_student():
+def update_student(students):
     try:
         student_id = int(input("Enter student ID to update: "))
     except ValueError:
@@ -173,47 +154,9 @@ def update_student():
             student["grades"] = grades
             student["average"] = calculate_average(grades)
 
-            save_students()
+            save_students(students)
 
             print("Student updated successfully!")
             return
 
     print("Student not found")
-
-
-load_students()
-
-
-while True:
-
-    print("\nStudent Grade Manager")
-    print("1. Add student")
-    print("2. Show students")
-    print("3. Search student")
-    print("4. Delete student")
-    print("5. Update student")
-    print("6. Exit")
-
-    choice = input("Choose an option: ")
-
-    if choice == "1":
-        add_student()
-
-    elif choice == "2":
-        show_students()
-
-    elif choice == "3":
-        search_student()
-
-    elif choice == "4":
-        delete_student()
-
-    elif choice == "5":
-        update_student()
-
-    elif choice == "6":
-        print("Goodbye!")
-        break
-
-    else:
-        print("Invalid choice")
