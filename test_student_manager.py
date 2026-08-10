@@ -1,7 +1,7 @@
 import storage
 
 from student_manager import calculate_average
-
+from student_manager import get_ranked_students
 
 def test_calculate_average():
     grades = [10, 15, 20]
@@ -46,3 +46,31 @@ def test_save_and_load_students(tmp_path, monkeypatch):
     loaded_students = storage.load_students()
 
     assert loaded_students == students
+
+def test_get_ranked_students():
+    students = [
+        {
+            "id": 1,
+            "name": "Lali",
+            "grades": [12, 14],
+            "average": 13
+        },
+        {
+            "id": 2,
+            "name": "Ali",
+            "grades": [18, 19],
+            "average": 18.5
+        },
+        {
+            "id": 3,
+            "name": "Sara",
+            "grades": [15, 16],
+            "average": 15.5
+        }
+    ]
+
+    ranked_students = get_ranked_students(students)
+
+    assert ranked_students[0]["name"] == "Ali"
+    assert ranked_students[1]["name"] == "Sara"
+    assert ranked_students[2]["name"] == "Lali"

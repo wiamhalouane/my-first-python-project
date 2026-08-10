@@ -1,6 +1,5 @@
 from storage import save_students
 
-
 def calculate_average(grades):
     return sum(grades) / len(grades)
 
@@ -77,6 +76,29 @@ def show_students(students):
         else:
             print("Status: Failed")
 
+def get_ranked_students(students):
+    return sorted(
+        students,
+        key=lambda student: student["average"],
+        reverse=True
+    )
+
+
+def rank_students(students):
+    if len(students) == 0:
+        print("No students found")
+        return
+
+    ranked_students = get_ranked_students(students)
+
+    print("\nStudent Ranking")
+
+    for position, student in enumerate(ranked_students, start=1):
+        print("----------------")
+        print("Rank:", position)
+        print("ID:", student["id"])
+        print("Name:", student["name"])
+        print("Average:", round(student["average"], 2))
 
 def search_student(students):
     try:

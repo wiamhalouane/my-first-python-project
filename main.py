@@ -4,7 +4,8 @@ from student_manager import (
     show_students,
     search_student,
     delete_student,
-    update_student
+    update_student,
+    rank_students
 )
 
 
@@ -19,7 +20,8 @@ while True:
     print("3. Search student")
     print("4. Delete student")
     print("5. Update student")
-    print("6. Exit")
+    print("6. Student ranking")
+    print("7. Exit")
 
     choice = input("Choose an option: ")
 
@@ -39,6 +41,9 @@ while True:
         update_student(students)
 
     elif choice == "6":
+        rank_students(students)
+
+    elif choice == "7":
         print("Goodbye!")
         break
 
