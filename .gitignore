@@ -1,2 +1,3 @@
 __pycache__/
-.envgit
+*.pyc
+.pytest_cache/
