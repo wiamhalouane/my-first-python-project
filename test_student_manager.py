@@ -1,5 +1,6 @@
+import storage
+
 from student_manager import calculate_average
-from storage import save_students, load_students
 
 
 def test_calculate_average():
@@ -27,6 +28,10 @@ def test_calculate_average_with_same_grades():
 
 
 def test_save_and_load_students(tmp_path, monkeypatch):
+    test_file = tmp_path / "students.json"
+
+    monkeypatch.chdir(tmp_path)
+
     students = [
         {
             "id": 1,
@@ -36,21 +41,8 @@ def test_save_and_load_students(tmp_path, monkeypatch):
         }
     ]
 
-    test_file = tmp_path / "test_students.json"
+    storage.save_students(students)
 
-    def test_save(students):
-        import json
-
-        with open(test_file, "w") as file:
-            json.dump(students, file, indent=4)
-
-    def test_load():
-        import json
-
-        with open(test_file, "r") as file:
-            return json.load(file)
-
-    test_save(students)
-    loaded_students = test_load()
+    loaded_students = storage.load_students()
 
     assert loaded_students == students

@@ -1,20 +1,21 @@
 Student Grade Manager
 
-A simple Python command-line application for managing student grades.
+A Python command-line application for managing student grades and storing student data using JSON.
 
 Features
 
 * Add students
 * Automatically generate student IDs
-* Store multiple grades for each student
+* Add multiple grades
 * Calculate student averages
-* Show student information
-* Search for students by ID
+* Display student information
+* Search students by ID
 * Delete students
 * Update student grades
 * Validate grades between 0 and 20
-* Save and load student data using JSON
-* Organized Python code using separate modules
+* Save and load data using JSON
+* Automated tests with pytest
+* Organized code using Python modules
 
 Project Structure
 
@@ -24,28 +25,37 @@ my-first-python-project/
 ├── student_manager.py
 ├── storage.py
 ├── students.json
+├── test_student_manager.py
+├── requirements.txt
 ├── README.md
 └── .gitignore
 
-Files
+Requirements
 
-* main.py — Runs the application and handles the menu.
-* student_manager.py — Contains student management functions.
-* storage.py — Handles saving and loading JSON data.
-* students.json — Stores student data.
-* .gitignore — Prevents temporary Python files from being tracked.
+* Python 3.10+
+* pip
 
-How to Run
+Installation
 
-Make sure Python is installed.
+Clone the repository:
 
-Run:
+git clone https://github.com/wiamhalouane/my-first-python-project.git
+
+Move into the project directory:
+
+cd my-first-python-project
+
+Install the dependencies:
+
+python -m pip install -r requirements.txt
+
+Run the Application
+
+Start the application with:
 
 python main.py
 
-Then choose an option from the menu.
-
-Example
+You will see:
 
 Student Grade Manager
 1. Add student
@@ -55,10 +65,37 @@ Student Grade Manager
 5. Update student
 6. Exit
 
+Run Tests
+
+Run the automated tests with:
+
+python -m pytest
+
+The tests cover the average calculation and JSON data storage.
+
+Data Storage
+
+Student data is stored in students.json.
+
+Example:
+
+[
+    {
+        "id": 1,
+        "name": "Sara",
+        "grades": [
+            15.0,
+            18.0
+        ],
+        "average": 16.5
+    }
+]
+
 Technologies
 
 * Python
 * JSON
+* pytest
 * Git
 * GitHub
 
@@ -71,8 +108,26 @@ This project helped me practice:
 * Loops and conditionals
 * Input validation
 * File handling
-* JSON data storage
+* JSON serialization and deserialization
 * Error handling
 * Python modules
-* Git and GitHub workflow
-* Refactoring and project organization
+* Automated testing
+* Git and GitHub
+* Project refactoring
+
+Future Improvements
+
+Possible future features:
+
+* Student ranking
+* Sort students by average
+* Export reports
+* Graphical user interface
+* Database storage
+* More comprehensive automated tests
+
+Author
+
+Wiam Halouane
+
+This project was built as part of my Python learning journey.
