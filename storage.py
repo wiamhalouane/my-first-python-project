@@ -9,6 +9,10 @@ def load_students():
     except FileNotFoundError:
         return []
 
+    except json.JSONDecodeError:
+        print("Warning: students.json is empty or corrupted.")
+        return []
+
 
 def save_students(students):
     with open("students.json", "w") as file:

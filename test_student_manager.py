@@ -74,3 +74,13 @@ def test_get_ranked_students():
     assert ranked_students[0]["name"] == "Ali"
     assert ranked_students[1]["name"] == "Sara"
     assert ranked_students[2]["name"] == "Lali"
+
+def test_load_students_with_invalid_json(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+
+    with open("students.json", "w") as file:
+        file.write("This is not valid JSON")
+
+    students = storage.load_students()
+
+    assert students == []
