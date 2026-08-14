@@ -7,7 +7,6 @@ from student_manager import calculate_average, get_ranked_students
 
 def test_calculate_average():
     grades = [10, 15, 20]
-
     result = calculate_average(grades)
 
     assert result == 15
