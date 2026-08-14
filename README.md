@@ -1,4 +1,6 @@
-Student Grade Manager
+[![Tests](https://github.com/wiamhalouane/my-first-python-project/actions/workflows/tests.yml/badge.svg)](https://github.com/wiamhalouane/my-first-python-project/actions/workflows/tests.yml)
+
+#Student Grade Manager
 
 A Python command-line application for managing student grades and storing student data using JSON.
 
