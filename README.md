@@ -1,22 +1,27 @@
 [![Tests](https://github.com/wiamhalouane/my-first-python-project/actions/workflows/tests.yml/badge.svg)](https://github.com/wiamhalouane/my-first-python-project/actions/workflows/tests.yml)
-
 # Student Grade Manager
 
-A Python CLI application for managing students, grades, averages, and rankings.
+A Python command-line application for managing students, grades, averages, and rankings.
+
+The project uses JSON for data storage and pytest for automated testing.
 
 ## Features
 
 - Add students
-- Store multiple grades
+- Automatically generate student IDs
+- Add multiple grades
+- Validate grades between 0 and 20
 - Calculate student averages
-- Pass/fail status
+- Display student information
+- Show pass/fail status
 - Search students by ID
 - Update student grades
 - Delete students
 - Rank students by average
-- Save and load data using JSON
-- Input validation
-- Automated tests with pytest
+- Save student data to JSON
+- Load student data from JSON
+- Handle missing or corrupted JSON files
+- Automated testing with pytest
 - Continuous Integration with GitHub Actions
 
 ## Technologies
